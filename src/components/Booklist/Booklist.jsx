@@ -3,12 +3,14 @@ import "./Booklist.css";
 
 import BookItem from "../BookItem/BookItem";
 
-const Booklist = ({bookData}) => {
+const Booklist = ({ bookDatas, deletePost }) => {
   return (
     <>
-      <div>
-        <BookItem bookData={bookData} />
-      </div>
+      {bookDatas.map((bookData) => (
+        <div className="book__list" key={bookData.id}>
+          <BookItem bookData={bookData} deletePost={deletePost} />
+        </div>
+      ))}
     </>
   );
 };
