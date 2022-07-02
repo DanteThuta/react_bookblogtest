@@ -1,8 +1,15 @@
 import React from "react";
 
 const Test = ({ test }) => {
-  //   console.log(test);
-  return <div>Test</div>;
+  return (
+    <>
+      {test.map((item) => (
+        <div key={item.userId}>
+          <p>{item.title}</p>
+        </div>
+      ))}
+    </>
+  );
 };
 
 export default Test;

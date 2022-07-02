@@ -25,15 +25,24 @@ const App = () => {
   };
 
   //test
-  const takeData = ({ title, body }) => {
-    const newData = {
-      userId: 1,
-      title: title,
-      body: body,
-    };
-    // setBookDatas({ ...bookDatas, newData });
-    setTest(newData);
-    console.log(test);
+  const takeData = ({ newTitle, newBody }) => {
+    // const newData = [
+    //   {
+    //     userId: 1,
+    //     title: newTitle,
+    //     body: newBody,
+    //   },
+    // ];
+    // console.log(typeof newData);
+    // // setBookDatas({ ...bookDatas, newData });
+    // setTest({ newData, ...test });
+
+    let newInput = [
+      ...test,
+      { userId: test.length + 1, title: newTitle, body: newBody },
+    ];
+
+    setTest(newInput);
   };
 
   const deletePost = (id) => {

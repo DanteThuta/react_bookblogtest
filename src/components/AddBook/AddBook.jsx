@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 const AddBook = ({ takeData }) => {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newBody, setNewBody] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    takeData(title, body);
+    takeData({ newTitle, newBody });
 
-    setTitle("");
-    // console.log(newData);
+    setNewTitle("");
+    setNewBody("");
   };
 
   // const handleChange = (e) => {
@@ -22,13 +22,13 @@ const AddBook = ({ takeData }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
         />
         <input
           type="text"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={newBody}
+          onChange={(e) => setNewBody(e.target.value)}
         />
 
         <button>Add</button>
