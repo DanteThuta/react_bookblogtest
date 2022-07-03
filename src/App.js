@@ -5,12 +5,13 @@ import axios from "axios";
 import Booklist from "./components/Booklist/Booklist";
 import AddBook from "./components/AddBook/AddBook";
 import Test from "./components/Test";
+import MyAddedTask from "./components/MyAddedTask/MyAddedTask";
 
 const App = () => {
   const url = "https://jsonplaceholder.typicode.com/posts";
 
   const [bookDatas, setBookDatas] = useState([]);
-  const [test, setTest] = useState([]);
+  const [addedTask, setAddedTask] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const fetchBookurl = async () => {
@@ -38,11 +39,16 @@ const App = () => {
     // setTest({ newData, ...test });
 
     let newInput = [
-      ...test,
-      { userId: test.length + 1, title: newTitle, body: newBody },
+      ...addedTask,
+      {
+        userId: addedTask.length + 1,
+        title: newTitle,
+        body: newBody,
+        complete: false,
+      },
     ];
-
-    setTest(newInput);
+    console.log(newInput);
+    setAddedTask(newInput);
   };
 
   const deletePost = (id) => {
@@ -70,7 +76,7 @@ const App = () => {
       ) : (
         <>
           <AddBook takeData={takeData} />
-          <Test test={test} />
+          <MyAddedTask addedTask={addedTask} setAddedTask={setAddedTask} />
           <Booklist bookDatas={bookDatas} deletePost={deletePost} />
         </>
       )}

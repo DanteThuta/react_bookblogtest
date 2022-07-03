@@ -6,6 +6,7 @@ const Test = ({ test }) => {
       {test.map((item) => (
         <div key={item.userId}>
           <p>{item.title}</p>
+          <p>{item.body}</p>
         </div>
       ))}
     </>
