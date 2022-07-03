@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const AddBook = ({ takeData }) => {
   const [newTitle, setNewTitle] = useState("");
@@ -16,6 +16,9 @@ const AddBook = ({ takeData }) => {
   // const handleChange = (e) => {
   //   console.log(e.target.value);
   // };
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // });
 
   return (
     <div>
@@ -23,6 +26,7 @@ const AddBook = ({ takeData }) => {
         <input
           type="text"
           value={newTitle}
+          // ref={inputRef}
           onChange={(e) => setNewTitle(e.target.value)}
         />
         <input

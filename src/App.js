@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css";
 
 //components
+import Navbar from "./components/Navbar/Navbar";
 import Booklist from "./components/Booklist/Booklist";
 import AddBook from "./components/AddBook/AddBook";
 import Test from "./components/Test";
@@ -65,6 +67,16 @@ const App = () => {
     // );
   };
 
+  const toggleToDo = (userId) => {
+    let updatedTodos = addedTask.map((item) => {
+      if (item.userId === userId) {
+        item.complete = !item.complete;
+      }
+      return item;
+    });
+    setAddedTask(updatedTodos);
+  };
+
   useEffect(() => {
     fetchBookurl();
   }, []);
@@ -75,8 +87,13 @@ const App = () => {
         <div>Loading...</div>
       ) : (
         <>
+          <Navbar />
           <AddBook takeData={takeData} />
-          <MyAddedTask addedTask={addedTask} setAddedTask={setAddedTask} />
+          <MyAddedTask
+            toggleToDo={toggleToDo}
+            addedTask={addedTask}
+            setAddedTask={setAddedTask}
+          />
           <Booklist bookDatas={bookDatas} deletePost={deletePost} />
         </>
       )}
