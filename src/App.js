@@ -13,7 +13,10 @@ const App = () => {
   const url = "https://jsonplaceholder.typicode.com/posts";
 
   const [bookDatas, setBookDatas] = useState([]);
-  const [addedTask, setAddedTask] = useState([]);
+  const [addedTask, setAddedTask] = useState(() => {
+    const localData = localStorage.getItem("addedTask");
+    return localData ? JSON.parse(localData) : [];
+  });
   const [loading, setLoading] = useState(false);
 
   const fetchBookurl = async () => {
@@ -29,17 +32,6 @@ const App = () => {
 
   //test
   const takeData = ({ newTitle, newBody }) => {
-    // const newData = [
-    //   {
-    //     userId: 1,
-    //     title: newTitle,
-    //     body: newBody,
-    //   },
-    // ];
-    // console.log(typeof newData);
-    // // setBookDatas({ ...bookDatas, newData });
-    // setTest({ newData, ...test });
-
     let newInput = [
       ...addedTask,
       {
@@ -51,6 +43,15 @@ const App = () => {
     ];
     console.log(newInput);
     setAddedTask(newInput);
+  };
+
+  //Delete Task
+  const deleteTask = (id) => {
+    const newTask = addedTask.filter((task) => {
+      return task.userId != id;
+    });
+    setAddedTask(newTask);
+    console.log("delete task work");
   };
 
   const deletePost = (id) => {
@@ -81,6 +82,10 @@ const App = () => {
     fetchBookurl();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("addedTask", JSON.stringify(addedTask));
+  }, [addedTask]);
+
   return (
     <>
       {loading ? (
@@ -93,6 +98,7 @@ const App = () => {
             toggleToDo={toggleToDo}
             addedTask={addedTask}
             setAddedTask={setAddedTask}
+            deleteTask={deleteTask}
           />
           <Booklist bookDatas={bookDatas} deletePost={deletePost} />
         </>
