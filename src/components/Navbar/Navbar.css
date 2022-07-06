@@ -1,4 +1,11 @@
 .navbar {
-  /* height: 5rem; */
-  background-color: red;
+  background-color: midnightblue;
+  height: 5rem;
+}
+
+.navbar h3 {
+  font-size: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  font-weight: bold;
 }

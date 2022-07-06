@@ -11,6 +11,7 @@ import MyAddedTask from "./components/MyAddedTask/MyAddedTask";
 
 const App = () => {
   const url = "https://jsonplaceholder.typicode.com/posts";
+  // limit command : ?_limit=5
 
   const [bookDatas, setBookDatas] = useState([]);
   const [addedTask, setAddedTask] = useState(() => {
