@@ -1,0 +1,19 @@
+.side-btn {
+  padding: 1rem 1.5rem;
+
+  background-color: royalblue;
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.pagination-btn {
+  padding: 1rem;
+  margin: 0 1rem;
+
+  border: 1px solid #777;
+  border-radius: 50%;
+
+  cursor: pointer;
+}

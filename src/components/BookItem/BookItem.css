@@ -7,3 +7,28 @@
 .book__info {
   width: 60%;
 }
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 2rem 8rem;
+  padding: 2rem 3rem;
+
+  border: 1px solid #888;
+  border-radius: 10px;
+}
+
+.book-container h3 {
+  font-size: 1.5rem;
+  padding: 2rem 3rem;
+}
+
+.toggle-readmore {
+  text-decoration: underline;
+  color: blueviolet;
+
+  cursor: pointer;
+}
