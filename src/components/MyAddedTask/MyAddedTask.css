@@ -1,3 +1,12 @@
+.post-container {
+  background: linear-gradient(
+    90deg,
+    rgba(42, 34, 3, 1) 0%,
+    rgba(36, 30, 0, 1) 0%,
+    rgba(217, 155, 92, 1) 61%,
+    rgba(254, 255, 0, 1) 100%
+  );
+}
 .complete {
   text-decoration: line-through;
 }
@@ -20,21 +29,52 @@
   width: 60%;
 
   display: flex;
-  flex-direction: column;
+
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 2rem auto;
 }
 
 .user-task {
+  flex-direction: column;
   margin: 2rem 0;
 }
 
-.user-singletask-title {
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.9);
+.user-taskheading {
+  font-size: 1.5rem;
+  background-color: green;
   padding: 1rem 2rem;
   border-radius: 10px;
   color: white;
   text-align: center;
+  text-transform: uppercase;
+}
+
+.user-taskinfo {
+  color: white;
+}
+
+.user-taskinfo-label {
+  font-size: 1.4rem;
+  padding-right: 1rem;
+}
+
+.btn-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  background-color: royalblue;
+
+  width: 8rem;
+  display: inline-block;
+
+  cursor: pointer;
+
+  border: none;
 }

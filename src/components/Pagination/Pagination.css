@@ -7,6 +7,11 @@
 
   cursor: pointer;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .pagination-btn {
   padding: 1rem;

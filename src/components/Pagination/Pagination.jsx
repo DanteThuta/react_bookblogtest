@@ -4,7 +4,7 @@ import "./Pagination.css";
 
 const Pagination = ({ data, RenderComponent, pageLimit, dataLimit }) => {
   const [pages] = useState(Math.round(data.length / dataLimit));
-  console.log(pages);
+
   const [currentPage, setCurrentPage] = useState(1);
   const gotoNextPage = () => {
     setCurrentPage((page) => page + 1);

@@ -6,7 +6,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Booklist from "./components/Booklist/Booklist";
 import AddBook from "./components/AddBook/AddBook";
-import Test from "./components/Test";
+import Footer from "./components/Footer/Footer";
 import MyAddedTask from "./components/MyAddedTask/MyAddedTask";
 
 const App = () => {
@@ -102,6 +102,7 @@ const App = () => {
             deleteTask={deleteTask}
           />
           <Booklist bookDatas={bookDatas} deletePost={deletePost} />
+          <Footer />
         </>
       )}
     </>

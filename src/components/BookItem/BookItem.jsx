@@ -37,6 +37,10 @@ function BookItem(props) {
           {readMore ? "...See More" : "...See Less"}
         </span>
       </p>
+      <div className="item-btn">
+        <button className="btn-type">Toggle</button>
+        <button className="btn-type">Delete</button>
+      </div>
     </div>
   );
 }

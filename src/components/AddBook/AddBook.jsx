@@ -22,8 +22,13 @@ const AddBook = ({ takeData }) => {
   // });
 
   return (
-    <div>
+    <div className="add-container">
       <form className="form-type" onSubmit={handleSubmit}>
+        <div className="form-headingsection">
+          <h3>
+            Add Your Posts here:<span className="cursor">|</span>
+          </h3>
+        </div>
         <input
           className="input-type"
           type="text"
@@ -32,9 +37,9 @@ const AddBook = ({ takeData }) => {
           // ref={inputRef}
           onChange={(e) => setNewTitle(e.target.value)}
         />
-        
+
         <input
-        className="input-textarea"
+          className="input-type"
           type="text"
           value={newBody}
           placeholder="Enter Value"

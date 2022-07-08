@@ -6,30 +6,6 @@ const MyAddedTask = ({ addedTask, setAddedTask, toggleToDo }) => {
   const [filteredTask, setFilteredTask] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [editData, setEditData] = useState("");
-  //   const handleCheck = (userId) => {
-  //     let checkedTask = addedTask.map((item) => {
-  //       if ((item.userId = userId)) {
-  //         item.complete = !item.complete;
-  //       }
-  //       return item;
-  //     });
-  //   };
-
-  // const completeToggle = () => {
-  //   let completeTask = addedTask.map((task) => {
-  //     if (task.complete) return task;
-  //   });
-  //   setAddedTask({ ...addedTask, completeTask });
-  //   // console.log(completeTask);
-  // };
-
-  // const incompleteToggle = () => {
-  //   let incompleteTask = addedTask.map((task) => {
-  //     if (!task.complete) return task;
-  //   });
-  //   setAddedTask(incompleteTask);
-  //   console.log(incompleteTask);
-  // };
 
   const statusHandler = (e) => {
     // console.log(e.target.value);
@@ -52,11 +28,11 @@ const MyAddedTask = ({ addedTask, setAddedTask, toggleToDo }) => {
   };
 
   const changeName = (userId) => {
-    // setEditData(e.target.value);
-    filteredTask.filter((item) => {
-      return item.userId === userId ? setEditData(item.title) : "";
+    let newEditItem = filteredTask.find((item) => {
+      return item.userId === userId;
     });
-    // console.log(editData);
+    setEditData(newEditItem.title);
+    setIsEdit(true);
   };
 
   useEffect(() => {
@@ -64,33 +40,51 @@ const MyAddedTask = ({ addedTask, setAddedTask, toggleToDo }) => {
   }, [addedTask, status]);
   return (
     <>
-      <div className="select-box">
-        <select onChange={statusHandler} className="select-type" name="" id="">
-          <option value="all">All</option>
-          <option value="complete">Complete</option>
-          <option value="incomplete">Incomplete</option>
-        </select>
-      </div>
-      {isEdit ? <input type="text" value={editData} /> : ""}
-      {filteredTask.map((item) => (
-        <div key={item.userId} className="user-container">
-          <div className="user-task">
-            <p
-              className={
-                item.complete
-                  ? "user-singletask-title complete"
-                  : "user-singletask-title"
-              }
-            >
-              {item.title}
-            </p>
-            <p>{item.body}</p>
-          </div>
-
-          <button onClick={() => toggleToDo(item.userId)}>Toggle</button>
-          <button onClick={() => changeName(item.userId)}>Edit</button>
+      <div className="post-container">
+        <div className="select-box">
+          <select
+            onChange={statusHandler}
+            className="select-type"
+            name=""
+            id=""
+          >
+            <option value="all">All</option>
+            <option value="complete">Complete</option>
+            <option value="incomplete">Incomplete</option>
+          </select>
         </div>
-      ))}
+        {isEdit ? (
+          <input type="text" value={editData} onChange={replaceName()} />
+        ) : (
+          ""
+        )}
+        {filteredTask.map((item) => (
+          <div key={item.userId} className="user-container">
+            <div className="user-task">
+              <p
+                className={
+                  item.complete
+                    ? "user-taskheading complete"
+                    : "user-taskheading"
+                }
+              >
+                {item.title}
+              </p>
+              <p className="user-taskinfo">
+                <span className="user-taskinfo-label">Notes:</span> {item.body}
+              </p>
+            </div>
+            <div className="btn-section">
+              <button className="btn" onClick={() => toggleToDo(item.userId)}>
+                Toggle
+              </button>
+              <button className="btn" onClick={() => changeName(item.userId)}>
+                Edit
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
